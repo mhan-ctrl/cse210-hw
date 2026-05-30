@@ -3,7 +3,7 @@
 public class Word
 {
     private string _text;
-    private bool _isHidden;
+    private bool _isHidden = false;
 
     public Word(string text)
     {
@@ -12,19 +12,27 @@ public class Word
 
     public void Hide()
     {
-
+        _isHidden = true;
     }
     public void Show()
     {
-
+        _isHidden = false;
     }
 
-    public bool isHidden()
+    public bool IsHidden()
     {
-
+        return _isHidden;
     }
     public string GetDisplayText()
     {
-        
+        if (_isHidden)
+        {
+            int length = _text.Length;
+            return new string('_', length);
+        }
+        else
+        {
+            return _text;
+        }
     }
 }
