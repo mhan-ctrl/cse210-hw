@@ -46,6 +46,13 @@ public class Scripture
             selected.Hide();
         }
     }
+    public void ResetVisibility()
+    {
+        foreach (Word word in _words)
+        {
+            word.Show();
+        }
+    }
 
     public string GetDisplayText()
     {

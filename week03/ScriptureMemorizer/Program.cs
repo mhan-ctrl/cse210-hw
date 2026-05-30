@@ -2,7 +2,7 @@ using System;
 using System.Configuration.Assemblies;
 using System.Data;
 using System.Net;
-
+//added a function to let the user reveal the scripture again (starting over)
 class Program
 {
     static void Main(string[] args)
@@ -18,17 +18,25 @@ class Program
             Console.Clear();
             Console.WriteLine(scripture.GetDisplayText());
             Console.WriteLine();
-            Console.WriteLine("Press enter to continue or type 'quit' to quit.");
+            Console.WriteLine("Press enter to continue, type 'reveal' to reset, or type 'quit' to quit.");
             userInput = Console.ReadLine();
-            if (scripture.IsCompletelyHidden())
-            {
-                break;
-            }
             if (userInput == "quit")
             {
                 break;
             }
-            scripture.HideRandomWords(1);
+            if (userInput == "reveal")
+            {
+                scripture.ResetVisibility();
+            }
+            else
+            {
+                scripture.HideRandomWords(1);
+            }
+
+            if (scripture.IsCompletelyHidden())
+            {
+                break;
+            }
         } while (true);
         
     }
